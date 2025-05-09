@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c35s7vhl7ojb8"]
+[gd_scene load_steps=7 format=3 uid="uid://c35s7vhl7ojb8"]
 
 [ext_resource type="Texture2D" uid="uid://cjfw0wohisarg" path="res://stitch.png" id="1_imdtk"]
 [ext_resource type="Script" uid="uid://5hmp7hscp3o6" path="res://animation_player.gd" id="2_ohja5"]
+[ext_resource type="Script" uid="uid://yp31i73emcm2" path="res://button.gd" id="3_d02gy"]
 
 [sub_resource type="Animation" id="Animation_epypp"]
 length = 4.0
@@ -115,5 +116,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_0hol4")
 }
 script = ExtResource("2_ohja5")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("3_d02gy")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
