@@ -1,6 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://c35s7vhl7ojb8"]
+[gd_scene load_steps=6 format=3 uid="uid://c35s7vhl7ojb8"]
 
 [ext_resource type="Texture2D" uid="uid://cjfw0wohisarg" path="res://stitch.png" id="1_imdtk"]
+[ext_resource type="Script" uid="uid://5hmp7hscp3o6" path="res://animation_player.gd" id="2_ohja5"]
+
+[sub_resource type="Animation" id="Animation_epypp"]
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.03333, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(184, 168), Vector2(862, 284), Vector2(200, 444), Vector2(200, 174)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2.03333, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.2927, 3.14255, 6.25667]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 2.03333, 4.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.109804, 1, 0.941176, 0.0941176), Color(0.985163, 1, 0.99902, 0.984902)]
+}
 
 [sub_resource type="Animation" id="Animation_0e48y"]
 resource_name = "tutorial"
@@ -55,33 +96,6 @@ tracks/3/keys = {
 "values": [-2.59756]
 }
 
-[sub_resource type="Animation" id="Animation_epypp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(848, 194)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0hol4"]
 _data = {
 &"RESET": SubResource("Animation_epypp"),
@@ -91,7 +105,8 @@ _data = {
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(848, 194)
+self_modulate = Color(0.985163, 1, 0.99902, 0.984902)
+position = Vector2(184, 168)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_imdtk")
 
@@ -99,3 +114,6 @@ texture = ExtResource("1_imdtk")
 libraries = {
 &"": SubResource("AnimationLibrary_0hol4")
 }
+script = ExtResource("2_ohja5")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
